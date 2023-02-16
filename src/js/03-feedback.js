@@ -32,9 +32,13 @@ function onFormInput() {
 }
 
 function getItems() {
-  const savedItems = JSON.parse(localStorage.getItem(STORAGE_KEY));
-  if (savedItems) {
-    refs.inputEmail.value = savedItems.email;
-    refs.inputTextarea.value = savedItems.message;
+  try {
+    const savedItems = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    if (savedItems) {
+      refs.inputEmail.value = savedItems.email;
+      refs.inputTextarea.value = savedItems.message;
+    }
+  } catch (e) {
+    console.log(e.name); // "SyntaxError"
   }
 }
