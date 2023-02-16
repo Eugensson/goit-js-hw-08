@@ -15,9 +15,14 @@ getItems();
 
 function onFormSubmit(e) {
   e.preventDefault();
-  e.currentTarget.reset();
-  localStorage.removeItem(STORAGE_KEY);
-  console.log(formData);
+
+  if (refs.inputEmail.value !== '' && refs.inputTextarea.value !== '') {
+    e.currentTarget.reset();
+    localStorage.removeItem(STORAGE_KEY);
+    console.log(formData);
+    return;
+  }
+  alert('All fields must be filled!!!');
 }
 
 function onFormInput() {
